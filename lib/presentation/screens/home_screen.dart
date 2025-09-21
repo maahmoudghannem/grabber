@@ -1,7 +1,7 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:grabber_app/presentation/widgets/banners_item.dart';
+import 'package:grabber_app/presentation/widgets/category_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -35,7 +35,9 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 18),
-        child: Column(children: [BannersItem()]),
+        child: Column(
+          children: [BannersItem(), SizedBox(height: 20), CategoryItem()],
+        ),
       ),
     );
   }
