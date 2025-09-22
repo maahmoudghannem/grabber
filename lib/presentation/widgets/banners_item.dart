@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 class BannersItem extends StatelessWidget {
   const BannersItem({super.key});
 
+  final List<String> banner = const [
+    "assets/images/banners/Slider1.png",
+    "assets/images/banners/Slider2.png",
+    "assets/images/banners/Slider3.png",
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final List<String> banner = [
-      "assets/images/banners/Slider1.png",
-      "assets/images/banners/Slider2.png",
-      "assets/images/banners/Slider3.png",
-    ];
-
     return CarouselSlider.builder(
       itemCount: banner.length,
       itemBuilder: (context, index, pageViewIndex) =>
