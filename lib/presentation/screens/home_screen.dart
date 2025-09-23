@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:grabber_app/presentation/widgets/banners_item.dart';
+import 'package:grabber_app/presentation/widgets/cart_view_item.dart';
 import 'package:grabber_app/presentation/widgets/category_item.dart';
 import 'package:grabber_app/presentation/widgets/product_card.dart';
 
@@ -9,7 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   static String id = "HomeScreen";
 
-  //TODO: do a product model for products and categorties
+  // TODO: do a product model for products and categorties
 
   @override
   Widget build(BuildContext context) {
@@ -38,36 +39,43 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 18),
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            BannersItem(),
-            SizedBox(height: 20),
-            CategoryItem(),
-            SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Fruits",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-                  ),
-                  Text(
-                    "See all",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff0CA201),
+        child: SingleChildScrollView(
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              BannersItem(),
+              SizedBox(height: 20),
+              CategoryItem(),
+              SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Fruits",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
-                ],
+                    Text(
+                      "See all",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff0CA201),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 30),
-            ProductCard(),
-          ],
+              SizedBox(height: 30),
+              ProductCard(),
+              CartViewItem(),
+              // SizedBox(height: 15),
+            ],
+          ),
         ),
       ),
     );

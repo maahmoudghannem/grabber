@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grabber_app/presentation/models/category_model.dart';
+import 'package:grabber_app/presentation/models/product_model.dart';
 
 class CategoryItem extends StatelessWidget {
   CategoryItem({super.key});

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:grabber_app/presentation/models/category_model.dart';
+import 'package:grabber_app/presentation/models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
   ProductCard({super.key});
-
-  //TODO: do a product model for products and categorties
 
   final List<Products> productData = [
     Products(
