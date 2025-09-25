@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grabber_app/presentation/screens/home_screen.dart';
-import 'package:grabber_app/presentation/screens/splash_screen.dart';
+import 'presentation/screens/home_screen.dart';
+import 'presentation/screens/splash_screen.dart';
 
 void main() {
   runApp(Grabber());

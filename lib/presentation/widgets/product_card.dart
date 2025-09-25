@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:grabber_app/presentation/models/product_model.dart';
+import '../../functions/getters.dart';
+import '../models/product_model.dart';
 
-class ProductCard extends StatelessWidget {
-  ProductCard({super.key});
+class ProductCard extends StatefulWidget {
+  const ProductCard({super.key});
 
-  final List<Products> productData = [
-    Products(
-      name: "  Banana",
-      rate: "4.8 (287)",
-      price: r"  $3.99",
-      image: "assets/images/fruits/banana.png",
-    ),
-    Products(
-      name: "  Pepper",
-      rate: "4.8 (287)",
-      price: r"  $3.99",
-      image: "assets/images/fruits/pepper.png",
-    ),
-    Products(
-      name: "  Orange",
-      rate: "4.8 (287)",
-      price: r"  $2.99",
-      image: "assets/images/fruits/orange.png",
-    ),
-  ];
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  final productsList = getProductData();
+
+  List basketList = [];
+
+  void toggleSelection(Products product) {
+    setState(() {
+      if (basketList.contains(product)) {
+        basketList.remove(product);
+      } else {
+        basketList.add(product);
+      }
+    });
+  }
+
+  bool isSelected(Products product) => basketList.contains(product);
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +33,9 @@ class ProductCard extends StatelessWidget {
       height: 300,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: productData.length,
+        itemCount: productsList.length,
         itemBuilder: (context, index) {
-          final productindex = productData[index];
+          final productindex = productsList[index];
           return Padding(
             padding: const EdgeInsets.only(left: 12.0, right: 8),
             child: Column(
@@ -57,7 +58,10 @@ class ProductCard extends StatelessWidget {
                     Positioned(
                       bottom: -42,
                       right: -35,
-                      child: SvgPicture.asset("assets/images/icons/Add.svg"),
+                      child: GestureDetector(
+                        onTap: () => toggleSelection(productindex),
+                        child: SvgPicture.asset("assets/images/icons/Add.svg"),
+                      ),
                     ),
                   ],
                 ),

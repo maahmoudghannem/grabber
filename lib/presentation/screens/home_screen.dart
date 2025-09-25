@@ -1,16 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:grabber_app/presentation/widgets/banners_item.dart';
-import 'package:grabber_app/presentation/widgets/cart_view_item.dart';
-import 'package:grabber_app/presentation/widgets/category_item.dart';
-import 'package:grabber_app/presentation/widgets/product_card.dart';
+import '../models/product_model.dart';
+import '../widgets/banners_item.dart';
+import '../widgets/cart_view_item.dart';
+import '../widgets/category_item.dart';
+import '../widgets/product_card.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   static String id = "HomeScreen";
 
-  // TODO: do a product model for products and categorties
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List basketList = [];
+
+  void toggleSelection(Products product) {
+    setState(() {
+      if (basketList.contains(product)) {
+        basketList.remove(product);
+      } else {
+        basketList.add(product);
+      }
+    });
+  }
+
+  bool isSelected(Products product) => basketList.contains(product);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +50,7 @@ class HomeScreen extends StatelessWidget {
               icon: Icon(Icons.keyboard_arrow_down_rounded, size: 32),
             ),
             Spacer(),
-            SvgPicture.asset("assets/images/icons/basket.svg"),
+            // SvgPicture.asset("assets/images/icons/basket.svg"),
           ],
         ),
       ),
@@ -41,7 +58,6 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 18),
         child: SingleChildScrollView(
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.start,
             children: [
               BannersItem(),
               SizedBox(height: 20),
@@ -70,10 +86,9 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 15),
               ProductCard(),
               CartViewItem(),
-              // SizedBox(height: 15),
             ],
           ),
         ),
